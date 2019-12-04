@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
-const https = require('https');
+require('dotenv').config()
 
 app.get('/', function (req, res) {
- return res.send('Welcome To The Frog Vlog');
+ return res.send(process.env.CLIENT_ID);
 });
 
 app.get('/disocvery', function(req, res) {
