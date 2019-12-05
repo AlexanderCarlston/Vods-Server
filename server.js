@@ -14,9 +14,9 @@ app.get('/games', function (req, res) {
   return getGames().then(data => res.json(data))
 });
 
-app.get('/disocvery', function (req, res) {
-  console.log(req)
-  return res.send('example')
+app.get('/games/:id', function (req, res) {
+  console.log(req.params.id, 'id')
+  return getVideosFromGame(req.params.id).then(data => res.json(data))
 });
 
 app.listen(process.env.PORT || 8080);
