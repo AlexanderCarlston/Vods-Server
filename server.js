@@ -15,7 +15,6 @@ app.get('/games', function (req, res) {
 });
 
 app.get('/games/:id', function (req, res) {
-  console.log(req.params.id, 'id')
   return getVideosFromGame(req.params.id).then(data => res.json(data))
 });
 
