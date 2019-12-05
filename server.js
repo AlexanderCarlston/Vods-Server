@@ -11,10 +11,11 @@ const config = {
 const baseUrl = 'https://api.twitch.tv/helix/'
 
 app.get('/games', function (req, res) {
-  getGames().then(data => res.json(data))
+  return getGames().then(data => res.json(data))
 });
 
 app.get('/disocvery', function (req, res) {
+  console.log(req)
   return res.send('example')
 });
 
@@ -25,4 +26,11 @@ function getGames() {
       console.log(response.data);
       return response.data
     })
+}
+
+function getVideosFromGame(gameId) {
+  return axios.get(baseUrl + `videos?game_id=${gameId}`, config).then(response => {
+    console.log(response.data);
+    return response.data
+  })
 }
