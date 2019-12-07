@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const axios = require('axios');
+var cors = require('cors')
 require('dotenv').config()
 
 const config = {
@@ -9,6 +10,8 @@ const config = {
   }
 }
 const baseUrl = 'https://api.twitch.tv/helix/'
+
+app.use(cors())
 
 app.get('/games', function (req, res) {
   return getGames().then(data => res.json(data))
